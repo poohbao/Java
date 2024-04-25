@@ -1,15 +1,21 @@
-package com.ohgiraffers.sectionsecurity.user.model.dto.service;
+package com.ohgiraffers.sessionsecurity.user.model.service;
 
-import com.ohgiraffers.sectionsecurity.user.model.dto.SignupDTO;
+import com.ohgiraffers.sessionsecurity.user.model.dto.LoginUserDTO;
+import com.ohgiraffers.sessionsecurity.user.model.dao.UserMapper;
+import com.ohgiraffers.sessionsecurity.user.model.dto.SignupDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserMapper userMapper;
 
     public int regist(SignupDTO signupDTO) {
 
@@ -25,5 +31,16 @@ public class UserService {
 
         return result;
 
+    }
+
+    public LoginUserDTO findByUsername(String username) {
+
+        LoginUserDTO login = userMapper.findByUsername(username);
+
+        if(!Objects.isNull(login)) {
+            return login;
+        } else {
+            return null;
+        }
     }
 }

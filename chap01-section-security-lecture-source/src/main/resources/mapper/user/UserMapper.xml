@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ohgiraffers.sectionsecurity.user.model.dao.UserMapper">
+<mapper namespace="com.ohgiraffers.sessionsecurity.user.model.dao.UserMapper">
 
-    <insert id="regist" parameterType="com.ohgiraffers.sectionsecurity.user.model.dto.SignupDTO">
+    <insert id="regist" parameterType="com.ohgiraffers.sessionsecurity.user.model.dto.SignupDTO">
         INSERT INTO TBL_USER
         (
             USER_ID,
@@ -20,4 +20,25 @@
         #{role}
         )
     </insert>
+
+    <resultMap id="login" type="com.ohgiraffers.sessionsecurity.user.model.dto.LoginUser">
+        <id property="userCode" column="USER_NO"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="password" column="PASSWORD"/>
+        <result property="userRole" column="USER_ROLE"/>
+    </resultMap>
+
+    <select id="findByUsername" resultMap="login">
+        SELECT
+            USER_NO,
+            USER_ID,
+            USER_NAME,
+            PASSWORD,
+            USER_ROLE
+        FROM
+            TBL_USER
+        WHERE
+            USER_ID = #{ username }
+    </select>
 </mapper>

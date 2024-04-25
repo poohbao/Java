@@ -1,4 +1,4 @@
-package com.ohgiraffers.ectionsecurity.config;
+package com.ohgiraffers.sessionsecurity.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.ohgiraffers.sectionsecurity.common;
+package com.ohgiraffers.sessionsecurity.common;
 
 public enum UserRole {
 
@@ -22,7 +22,9 @@ public enum UserRole {
 
     @Override
     public String toString() {
-
+        return "UserRole{" +
+                "role='" + role + '\'' +
+                '}';
     }
 }
 

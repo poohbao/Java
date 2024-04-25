@@ -1,6 +1,6 @@
-package com.ohgiraffers.ectionsecurity.config;
+package com.ohgiraffers.sessionsecurity.config;
 
-import org.apache.catalina.mapper.Mapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
